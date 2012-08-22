@@ -1,0 +1,41 @@
+﻿<Window x:Class="IntroToWpf.App.SetupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Setup" Height="395" Width="430">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Arial"></Setter> 
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!-- Labels -->
+        <Label Grid.Row="0">Name</Label>
+        <Label Grid.Row="1">Type</Label>
+        <Label Grid.Row="2">Image Path</Label>
+        <!-- Image -->
+        <Image Grid.Row="3" Grid.ColumnSpan="2" Height="88" Width="127" Source="{Binding Image}"/>
+        <!-- Buttons -->
+        <Button Command="{Binding MoveBack}" CommandParameter="{Binding Id}" Grid.Row="4" Grid.ColumnSpan="2" Width="44" Height="44" Margin="10,25" Content="&lt;" HorizontalAlignment="Left" />
+        <Button Command="{Binding MoveForward}" CommandParameter="{Binding Id}" Grid.Row="4" Grid.ColumnSpan="2" Width="44" Height="44" Margin="10,25" Content="&gt;" HorizontalAlignment="Right"/>
+        <Button Command="{Binding Save}" CommandParameter="{Binding Id}" Grid.Row="5" Grid.ColumnSpan="2" Width="44" Height="25" Margin="10" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+        <Button Command="{Binding Close}" CommandParameter="{Binding Id}" Grid.Row="5" Grid.ColumnSpan="2" Width="44" Height="25" Margin="10" Content="Close" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <!-- Inputs -->
+        <TextBox Grid.Column="1" Grid.Row="0" Width="Auto" Text="{Binding Name}"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Types}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Type}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Width="Auto" Text="{Binding ImagePath}"/>
+
+    </Grid>
+</Window>
